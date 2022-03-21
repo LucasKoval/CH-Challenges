@@ -1,32 +1,32 @@
 function mostrarLista(dataList) {
-   if (dataList.length) {
-      console.log(dataList);
-   } else {
-      console.log('Lista vacía');
-   }
+  if (dataList.length) {
+    console.log(dataList)
+  } else {
+    console.log('Lista vacía')
+  }
 }
 
-mostrarLista();
-mostrarLista([]);
-mostrarLista(['Lucas']);
-mostrarLista(['Rojo', 'Azul', 'Blanco']);
+mostrarLista()
+mostrarLista([])
+mostrarLista(['Lucas'])
+mostrarLista(['Rojo', 'Azul', 'Blanco'])
 
 //-----------------------------------------//
 
-(function ([1,2,3]) {
+/* (function (data) {
     if (data) {
        console.log(dataList);
     } else {
        console.log('Lista vacía');
     }
-})()
- 
+})() */
+
 //-----------------------------------------//
 
-function crearMultiplicador(numberA) {
+/* function crearMultiplicador(numberA) {
     return function (numberB) {
         console.log(numberA * numberB)
     }
 }
     const duplicar = crearMultiplicador(2)
-
+ */
