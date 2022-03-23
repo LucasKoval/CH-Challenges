@@ -11,8 +11,12 @@ class User {
   }
 
   addPet(petName) {
-    console.log('Pet added successfully!')
-    return this.pets.push(petName)
+    if (typeof petName === 'string') {
+      console.log('Pet added successfully!')
+      return this.pets.push(petName)
+    } else {
+      throw new Error('Debe ingresar el nombre de una mascota.')
+    }
   }
 
   countPets() {
@@ -20,8 +24,12 @@ class User {
   }
 
   addBook(name, author) {
-    console.log('Book added successfully!')
-    return this.books.push({ name: name, author: author })
+    if (typeof name === 'string' && typeof author === 'string') {
+      console.log('Book added successfully!')
+      return this.books.push({ name: name, author: author })
+    } else {
+      throw new Error('Los datos ingresados son incorrectos.')
+    }
   }
 
   getBookNames() {
@@ -50,7 +58,7 @@ console.log(user.getFullName())
 // Pets
 console.log('//---- Pets ----//')
 console.log('Total Pets: ', user.countPets())
-user.addPet('Bruno')
+user.addPet('Chuleta')
 console.log('Updated Total Pets: ', user.countPets())
 
 // Books
