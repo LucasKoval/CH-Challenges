@@ -1,48 +1,60 @@
-class Usuario {
-  constructor(nombre, apellido, libros, mascotas) {
-    this.nombre = nombre
-    this.apellido = apellido
-    this.libros = libros
-    this.mascotas = mascotas
+class User {
+  constructor(name, surname, books, pets) {
+    this.name = name
+    this.surname = surname
+    this.books = books
+    this.pets = pets
   }
 
   getFullName() {
-    return `${this.nombre} ${this.apellido}`
+    return `${this.name} ${this.surname}`
   }
 
-  addMascota(nombreMascota) {
-    return this.mascotas.push(nombreMascota)
+  addPet(petName) {
+    console.log('Pet added successfully!')
+    return this.pets.push(petName)
   }
 
-  countMascotas() {
-    return this.mascotas.length
+  countPets() {
+    return this.pets.length
   }
 
-  addBook(nombre, autor) {
-    return this.libros.push({ nombre: nombre, autor: autor })
+  addBook(name, author) {
+    console.log('Book added successfully!')
+    return this.books.push({ name: name, author: author })
   }
 
   getBookNames() {
-    let nombresLibros = []
-    for (let i = 0; i < this.libros.length; i++) {}
-    return Object.values(this.libros)
+    let bookList = []
+    for (const book of this.books) {
+      bookList.push(book.name)
+    }
+    return bookList
   }
 }
 
-const usuario = new Usuario(
+const user = new User(
   'Lucas',
   'Koval',
   [
-    { nombre: 'Dracula', autor: 'Bram Stoker' },
-    { nombre: 'El Resplandor', autor: 'Stephen King' },
+    { name: 'Dracula', author: 'Bram Stoker' },
+    { name: 'El Resplandor', author: 'Stephen King' },
   ],
   ['Carlito']
 )
 
-console.log(usuario.getFullName())
-console.log(usuario.countMascotas())
-usuario.addMascota('Bruno')
-console.log(usuario.countMascotas())
-console.log(usuario.getBookNames())
-usuario.addBook('Otra vuelta de tuerca', 'Henry James')
-console.log(usuario.getBookNames())
+// Name
+console.log('//---- Full Name ----//')
+console.log(user.getFullName())
+
+// Pets
+console.log('//---- Pets ----//')
+console.log('Total Pets: ', user.countPets())
+user.addPet('Bruno')
+console.log('Updated Total Pets: ', user.countPets())
+
+// Books
+console.log('//---- Books ----//')
+console.log('Book List: ', user.getBookNames())
+user.addBook('Otra vuelta de tuerca', 'Henry James')
+console.log('Updated Book List: ', user.getBookNames())
