@@ -1,58 +1,97 @@
 const fs = require('fs')
 
-let prevId = 0
-
 class Container {
-  constructor(path) {
-    this.path = path
-    this.array = []
+  constructor(fileName) {
+    this.fileName = fileName
   }
 
-  async save(object) {
-    object.id = prevId + 1
-    prevId++
-    this.array.push(object)
-    await fs.promises.writeFile(`${this.path}.json`, JSON.stringify(this.array))
-    // await fs.promises.writeFile(`${this.path}.txt`, JSON.stringify(this.array))
-    console.log('%c⧭ id', 'color: #00ff03;', object.id)
-    return object.id
+  async save(product) {
+    try {
+      const allProducts = JSON.parse(await fs.promises.readFile(`${this.fileName}.json`, 'utf-8'))
+      product.id = allProducts.length + 1
+      allProducts.push(product)
+      await fs.promises.writeFile(`${this.fileName}.json`, JSON.stringify(allProducts), 'utf-8')
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log('ID:', product.id)
+      console.log('save method finished successfully!')
+      console.log('----------------------------------')
+      return product.id
+    }
   }
 
-  async getById(number) {
-    const jsonData = JSON.parse(await fs.promises.readFile(`${this.path}.json`, 'utf-8'))
-    // console.log('%c⧭ jsonData', 'color: #ff6c61;', jsonData)
-
-    // const parsedData = await JSON.parse(jsonData)
-    // console.log('%c⧭ parsedData', 'color: #ff6c61;', parsedData)
-
-    const productFound = jsonData.find((object) => object.id === number)
-    // console.log('%c⧭ found', 'color: #ff6c61;', found)
-
-    if (!productFound) return null
-    return productFound
+  async getById(id) {
+    try {
+      const allProducts = JSON.parse(await fs.promises.readFile(`${this.fileName}.json`, 'utf-8'))
+      const productFound = allProducts.find((product) => product.id === id)
+      if (!productFound) {
+        console.log(null)
+        return null
+      } else {
+        console.log(productFound)
+        return productFound
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log('getById method finished successfully!')
+      console.log('-------------------------------------')
+    }
   }
 
   async getAll() {
-    const jsonData = JSON.parse(await fs.promises.readFile(`${this.path}.json`, 'utf-8'))
-    console.log('%c⧭ jsonData', 'color: #ff6c61;', jsonData)
+    try {
+      const allProducts = JSON.parse(await fs.promises.readFile(`${this.fileName}.json`, 'utf-8'))
+      if (allProducts.length) {
+        console.log('Products:', allProducts)
+        return allProducts
+      } else {
+        console.log('There are no products in the list.')
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log('getAll method finished successfully!')
+      console.log('------------------------------------')
+    }
   }
 
-  async deleteById(number) {
-    const jsonData = JSON.parse(await fs.promises.readFile(`${this.path}.json`, 'utf-8'))
-    // console.log('%c⧭ jsonData', 'color: #ff6c61;', jsonData)
-
-    const productList = jsonData.filter((object) => object.id !== number)
-    // console.log('%c⧭ productList', 'color: #ff6c61;', productList)
-
-    return productList
+  async deleteById(id) {
+    try {
+      const allProducts = JSON.parse(await fs.promises.readFile(`${this.fileName}.json`, 'utf-8'))
+      const filteredProductList = allProducts.filter((product) => product.id !== id)
+      if (JSON.stringify(allProducts) === JSON.stringify(filteredProductList)) {
+        console.log(`The product with ID ${id} does not exist.`)
+      } else {
+        await fs.promises.writeFile(
+          `${this.fileName}.json`,
+          JSON.stringify(filteredProductList),
+          'utf-8'
+        )
+        console.log(`The product with ID ${id} has been removed.`)
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log('deleteById method finished successfully!')
+      console.log('----------------------------------------')
+    }
   }
 
   async deleteAll() {
-    this.array = []
+    try {
+      await fs.promises.writeFile(`${this.fileName}.json`, JSON.stringify([]), 'utf-8')
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log('deleteAll method finished successfully!')
+      console.log('---------------------------------------')
+    }
   }
 }
 
-const container = new Container('test')
+const container = new Container('productos')
 
 const product_1 = {
   title: 'Escuadra',
@@ -60,14 +99,12 @@ const product_1 = {
   thumbnail:
     'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png',
 }
-
 const product_2 = {
   title: 'Calculadora',
   price: 234.56,
   thumbnail:
     'https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png',
 }
-
 const product_3 = {
   title: 'Globo Terráqueo',
   price: 345.67,
@@ -75,10 +112,18 @@ const product_3 = {
     'https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png',
 }
 
+// METHODS:
+// Save products into the file
 container.save(product_1)
-container.save(product_2)
-container.save(product_3)
 
-//container.getById(2)
+// Search for a product by ID
+/* container.getById(2) */
 
-container.getAll()
+// Remove a product by ID
+/* container.deleteById(1) */
+
+// Get all products
+/* container.getAll() */
+
+// Delete all products
+/* container.deleteAll() */
