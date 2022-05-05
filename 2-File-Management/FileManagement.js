@@ -114,16 +114,18 @@ const product_3 = {
 
 // METHODS:
 // Save products into the file
-container.save(product_1)
+await container.save(product_1)
+await container.save(product_2)
+await container.save(product_3)
 
 // Search for a product by ID
-/* container.getById(2) */
+await container.getById(2)
 
 // Remove a product by ID
-/* container.deleteById(1) */
+await container.deleteById(1)
 
 // Get all products
-/* container.getAll() */
+await container.getAll()
 
 // Delete all products
-/* container.deleteAll() */
+await container.deleteAll()
