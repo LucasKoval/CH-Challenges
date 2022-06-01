@@ -1,0 +1,262 @@
+1) y 2)
+db.products.insertOne({name: 'Notebook', price: 1500})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe63b2d047401d82e9ef8") }
+db.products.insertOne({name: 'Webcam', price: 300})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe6462d047401d82e9ef9") }
+db.products.insertOne({name: 'Microfono', price: 250})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe64e2d047401d82e9efa") }
+db.products.insertOne({name: 'Mouse', price: 120})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe6562d047401d82e9efb") }
+db.products.insertOne({name: 'Teclado', price: 180})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe65d2d047401d82e9efc") }
+db.products.insertOne({name: 'Parlantes', price: 150})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe6632d047401d82e9efd") }
+db.products.insertOne({name: 'Placa de video', price: 1200})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe66a2d047401d82e9efe") }
+db.products.insertOne({name: 'Placa de red', price: 100})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe6702d047401d82e9eff") }
+db.products.insertOne({name: 'Fuente', price: 400})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe6852d047401d82e9f00") }
+db.products.insertOne({name: 'Motherboard', price: 800})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe6942d047401d82e9f01") }
+
+
+db.messages.insertOne({autor: 'Don José', message: 'Hola Don Pepito!'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fe9fe2d047401d82e9f02") }
+db.messages.insertOne({autor: 'Don Pepito', message: 'Hola Don José!'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea082d047401d82e9f03") }
+db.messages.insertOne({autor: 'Don José', message: 'Paso usted por mi casa?'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea1a2d047401d82e9f04") }
+db.messages.insertOne({autor: 'Don Pepito', message: 'Por su casa yo pasé'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea2c2d047401d82e9f05") }
+db.messages.insertOne({autor: 'Don José', message: 'La vio usted a mi abuela?'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea332d047401d82e9f06") }
+db.messages.insertOne({autor: 'Don Pepito', message: 'A su abuela no la vi'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea422d047401d82e9f07") }
+db.messages.insertOne({autor: 'Don José', message: 'Estas seguro?'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea4f2d047401d82e9f08") }
+db.messages.insertOne({autor: 'Don Pepito', message: 'Pero si! Si te digo que no la ví, no la ví!'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea782d047401d82e9f09") }
+db.messages.insertOne({autor: 'Don José', message: 'Adios Don Pepito!'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea7d2d047401d82e9f0a") }
+db.messages.insertOne({autor: 'Don Pepito', message: 'Adios Don José!'})
+{ acknowledged: true,
+  insertedId: ObjectId("627fea7d2d047401d82e9f1e") }
+
+
+3)
+// Listar todos los documentos de la colección Products
+db.products.find()
+{ _id: ObjectId("627fe63b2d047401d82e9ef8"),
+  name: 'Notebook',
+  price: 1500 }
+{ _id: ObjectId("627fe6462d047401d82e9ef9"),
+  name: 'Webcam',
+  price: 300 }
+{ _id: ObjectId("627fe64e2d047401d82e9efa"),
+  name: 'Microfono',
+  price: 250 }
+{ _id: ObjectId("627fe6562d047401d82e9efb"),
+  name: 'Mouse',
+  price: 120 }
+{ _id: ObjectId("627fe65d2d047401d82e9efc"),
+  name: 'Teclado',
+  price: 180 }
+{ _id: ObjectId("627fe6632d047401d82e9efd"),
+  name: 'Parlantes',
+  price: 150 }
+{ _id: ObjectId("627fe66a2d047401d82e9efe"),
+  name: 'Placa de video',
+  price: 1200 }
+{ _id: ObjectId("627fe6702d047401d82e9eff"),
+  name: 'Placa de red',
+  price: 100 }
+{ _id: ObjectId("627fe6852d047401d82e9f00"),
+  name: 'Fuente',
+  price: 400 }
+{ _id: ObjectId("627fe6942d047401d82e9f01"),
+  name: 'Motherboard',
+  price: 800 }
+
+
+// Listar todos los documentos de la colección Messages
+db.messages.find()
+{ _id: ObjectId("627fe9fe2d047401d82e9f02"),
+  autor: 'Don José',
+  message: 'Hola Don Pepito!' }
+{ _id: ObjectId("627fea082d047401d82e9f03"),
+  autor: 'Don Pepito',
+  message: 'Hola Don José!' }
+{ _id: ObjectId("627fea1a2d047401d82e9f04"),
+  autor: 'Don José',
+  message: 'Paso usted por mi casa?' }
+{ _id: ObjectId("627fea2c2d047401d82e9f05"),
+  autor: 'Don Pepito',
+  message: 'Por su casa yo pasé' }
+{ _id: ObjectId("627fea332d047401d82e9f06"),
+  autor: 'Don José',
+  message: 'La vio usted a mi abuela?' }
+{ _id: ObjectId("627fea422d047401d82e9f07"),
+  autor: 'Don Pepito',
+  message: 'A su abuela no la vi' }
+{ _id: ObjectId("627fea4f2d047401d82e9f08"),
+  autor: 'Don José',
+  message: 'Estas seguro?' }
+{ _id: ObjectId("627fea782d047401d82e9f09"),
+  autor: 'Don Pepito',
+  message: 'Pero si! Si te digo que no la ví, no la ví!' }
+{ _id: ObjectId("627fea7d2d047401d82e9f0a"),
+  autor: 'Don José',
+  message: 'Adios Don Pepito!' }
+{ _id: ObjectId("627fea7d2d047401d82e9f1e"),
+  autor: 'Don Pepito',
+  message: 'Adios Don José!' }
+
+
+4)
+// Cantidad de documentos en ambas colecciones
+db.products.estimatedDocumentCount()
+10
+db.messages.estimatedDocumentCount()
+10
+
+
+5) CRUD:
+5-A)
+db.products.insertOne({ name: 'Micro Intel i7', price: 550})
+{ acknowledged: true,
+  insertedId: ObjectId("627fedac2d047401d82e9f0b") }
+
+
+5-B-i)
+db.products.find({ price: {$lt: 1000} })
+{ _id: ObjectId("627fe6462d047401d82e9ef9"),
+  name: 'Webcam',
+  price: 300 }
+{ _id: ObjectId("627fe64e2d047401d82e9efa"),
+  name: 'Microfono',
+  price: 250 }
+{ _id: ObjectId("627fe6562d047401d82e9efb"),
+  name: 'Mouse',
+  price: 120 }
+{ _id: ObjectId("627fe65d2d047401d82e9efc"),
+  name: 'Teclado',
+  price: 180 }
+{ _id: ObjectId("627fe6632d047401d82e9efd"),
+  name: 'Parlantes',
+  price: 150 }
+{ _id: ObjectId("627fe66a2d047401d82e9efe"),
+  name: 'Placa de red',
+  price: 100 }
+{ _id: ObjectId("627fe6702d047401d82e9eff"),
+  name: 'Fuente',
+  price: 400 }
+{ _id: ObjectId("627fedac2d047401d82e9f0b"),
+  name: 'Motherboard',
+  price: 800 }
+
+
+5-B-ii)
+db.products.find({price:{$gte: 1000, $lt: 3000}})
+{ _id: ObjectId("627fe63b2d047401d82e9ef8"),
+  name: 'Notebook',
+  price: 1500 }
+{ _id: ObjectId("627fe6852d047401d82e9f00"),
+  name: 'Placa de video',
+  price: 1200 }
+
+
+5-B-iii)
+db.products.find({price: {$gt: 3000}})
+
+
+5-B-iv)
+db.products.find({}, {name:1, _id:0}).sort({price: 1}).skip(2).limit(1)
+{ name: 'Parlantes' }
+
+
+5-C)
+db.products.aggregate({ $addFields: { stock: 100 } })
+{ _id: ObjectId("627fe63b2d047401d82e9ef8"),
+  name: 'Notebook',
+  price: 1500,
+  stock: 100 }
+{ _id: ObjectId("627fe6462d047401d82e9ef9"),
+  name: 'Webcam',
+  price: 300,
+  stock: 100 }
+{ _id: ObjectId("627fe64e2d047401d82e9efa"),
+  name: 'Microfono',
+  price: 250,
+  stock: 100 }
+{ _id: ObjectId("627fe6562d047401d82e9efb"),
+  name: 'Mouse',
+  price: 120,
+  stock: 100 }
+{ _id: ObjectId("627fe65d2d047401d82e9efc"),
+  name: 'Teclado',
+  price: 180,
+  stock: 100 }
+{ _id: ObjectId("627fe6632d047401d82e9efd"),
+  name: 'Parlantes',
+  price: 150,
+  stock: 100 }
+{ _id: ObjectId("627fe66a2d047401d82e9efe"),
+  name: 'Placa de video',
+  price: 1200,
+  stock: 100 }
+{ _id: ObjectId("627fe6702d047401d82e9eff"),
+  name: 'Placa de red',
+  price: 100,
+  stock: 100 }
+{ _id: ObjectId("627fe6852d047401d82e9f00"),
+  name: 'Fuente',
+  price: 400,
+  stock: 100 }
+{ _id: ObjectId("627fe6942d047401d82e9f01"),
+  name: 'Motherboard',
+  price: 800,
+  stock: 100 }
+{ _id: ObjectId("627fedac2d047401d82e9f0b"),
+  name: 'Micro Intel i7',
+  price: 550,
+  stock: 100 }
+
+
+5-D)
+db.products.updateMany({price: {$gt: 4000}}, { $set: {stock: 0 } })
+{ acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0 }
+
+
+5-E)
+db.products.deleteMany({price: {$lt: 1000}})
+{ acknowledged: true, deletedCount: 8 }
+
+
+6)
+db.createUser({ user:'pepe', pwd:'asd3456', roles: [{ role:'read', db:'coderhouse'}]})
+{ ok: 1 }
+db.auth({'pepe', 'asd456'})
